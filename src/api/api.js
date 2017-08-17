@@ -1,6 +1,22 @@
 import jsonp from 'common/js/jsonp'
-import { commonParams, options } from './config'
 import axios from 'axios'
+
+export const commonParams = {
+  g_tk: 5381,
+  inCharset: 'utf-8',
+  outCharset: 'utf-8',
+  notice: 0,
+  format: 'jsonp',
+  _:new Date().getTime()
+}
+
+export const options = {
+  param: 'jsonpCallback'
+}
+
+export const ERR_OK = 0
+
+
 
 export function getRecommend(fetch) {
     const url = 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'

@@ -115,7 +115,7 @@ export const getJsonpData = (url, data, options, id) => {
     return (dispatch) => {
         dispatch(requestStart(null, id))
         return jsonp(url, data, options).then((res) => {
-            if (res.code == ERR_OK) {
+            if (res.code == '0') {
                 dispatch(requestSuccess(res.data, id))
             } else {
                 console.log('status', res.code)
@@ -128,7 +128,7 @@ export const getJsonDataV2 = (url, data, options, id) => {
     return (dispatch) => {
         dispatch(requestStart(null, id))
         return jsonp(url, data, options).then((res) => {
-            if (res.code == ERR_OK) {
+            if (res.code == '0') {
                 dispatch(requestSuccess(res, id))
             } else {
                 console.log('status', res.subcode)
