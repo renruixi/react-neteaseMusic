@@ -1,0 +1,53 @@
+.mv_list{
+    .mv_item{
+        position: relative;
+        overflow: hidden;
+        float: left;
+        width: 49%;
+        border-bottom: none;
+        padding: 0;
+        margin-right: 2%;
+        &:nth-child(even){
+            margin-right:0;
+        }
+        .mv_item_container{
+            position: relative;
+            height: 100px;
+            .mv_pic{
+                width: 100%;
+                height: auto;
+            }
+            .mv_play_count{
+                font-size: 12px;
+                color: #fff;
+                position: absolute;
+                right: 10px;
+                top: 4px;
+            }
+            .mv_duration{
+                font-size: 12px;
+                color: #fff;
+                position: absolute;
+                left: 10px;
+                bottom: 8px;
+            }
+        }
+        .mv_info{
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px 10px;
+            .mv_title{
+                font-size: 14px;
+                color: #000;
+                margin-bottom: 6px;
+            }
+            .mv_subtitle{
+                font-size: 12px;
+                color: rgba(0, 0, 0, 0.5);
+                margin-bottom: 4px;
+            }
+        }
+    }
+}

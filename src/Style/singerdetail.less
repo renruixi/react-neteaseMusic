@@ -1,0 +1,72 @@
+.singer_detail_container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    .singer_detail{
+        position: relative; 
+        height: 40%;
+        .singer_name{
+            color: #fff;
+            font-size: 16px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .singer_bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            img{
+                transform-origin: top;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        .singer_tab{
+            .singer_tab_item{}
+        }
+    }
+    .singer_detail_tab{
+        position: relative;
+        width: 100%;
+        height: 43px;
+        line-height: 43px;
+        padding: 0 16px;
+        border-bottom: 1px solid #e5e5e5;
+        background: #fff;
+        .tab_item{
+            font-size: 14px;
+            color: #000;
+            text-align: center;
+            &.active{
+                color: red;
+                border-bottom: 2px solid red;
+            }
+        } 
+    }
+    .singer_music{
+        position: fixed;
+        width: 100%;
+        top: 47%;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+        background: #fff;
+        transform-origin: center center;
+        overflow-y: scroll;
+        .singer_music_container{
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}
+

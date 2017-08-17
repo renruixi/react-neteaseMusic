@@ -1,0 +1,282 @@
+.player_container{
+  .fullscreen_player{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 150;
+    background: #aaa;
+    .fullscreen_bg{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      background-size: cover;
+      background-position: bottom center;
+      opacity: 0.6;
+      -webkit-filter: blur(14px);
+      filter: blur(14px);
+      transition: opacity .3s linear;
+      &:after{
+        content: " ";
+        background-color: rgba(0,0,0,.5);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+      }
+    }
+    .fullscreen_play_header{
+      position: relative;
+      margin-bottom: 25px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      .player_back{}
+      .player_singer{
+        line-height: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+      }
+      .player_songname{
+        width: 70%;
+        margin: 0 auto;
+        line-height: 40px;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 18px;
+        color: #fff;
+      }
+    }
+    .fullscreen_player_info{
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        bottom: 170px;
+        white-space: nowrap;
+        font-size: 0;
+        overflow: hidden;
+      .song_container{
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-top: 60px;
+        .song_disc{
+          position: relative;
+          width: 8rem;
+          height: 8rem;
+          margin: 0 auto;
+          &.pause:after{
+            content: "";
+            transform:rotate(-20deg);
+          }
+          &:after{
+            content: " ";
+            position: absolute;
+            top: -62px;
+            left: 45%;;
+            z-index: 5;
+            width: 84px;
+            height: 122px;
+            background: url(../images/needle-ip6.png) no-repeat;
+            background-size: contain;
+            transform-origin: 5px top;
+            transition:all 0.4s ease-in-out;
+          }
+          .song_turn{
+            width: 100%;
+            height: 100%;
+            transform:translate3d(0,0,0);
+            &.play{
+              animation: playerRotate 20s linear infinite;
+            }
+            &.pause{
+              animation-play-state: paused;
+            }
+            .song_img{
+              z-index: 1;
+              border-radius: 50%;
+              overflow: hidden;
+              width: 64%;
+              height: 64%;
+              background: url(../images/disc_default.png) no-repeat;
+              background-size: contain;
+              img{
+                width: 100%;
+                vertical-align: middle;
+              }
+            }
+            &:after{
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              z-index: 2;
+              background: url(../images/disc_light-ip6.png) no-repeat;
+              background-size: contain;
+            }
+            &:before{
+              content: " ";
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              z-index: 2;
+              background: url(../images/disc-ip6.png) no-repeat;
+              background-size: contain;
+            }
+          }
+        }
+      }
+      .lyric_container{
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+    }
+    .player_bottom{
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      .progress_outer{
+        padding:0 8px;
+        .progress_inner{
+          width: 80%;
+          margin: 0px auto;
+          padding: 10px 0;
+        }
+        .player_time{
+          color: #fff;
+          font-size: 12px;
+          line-height: 30px;
+          width: 30px;
+          &.total{
+            margin-left:8px;
+          }
+          &.load{
+            margin-right:10px;
+          }
+        }
+      }
+      .player_ctrl_wrap{
+        width: 90%;
+        margin: 0 auto;
+        .player_ctrl{
+          .btn{
+            color: rgba(225,225,225,.8);
+            background: url(../images/player.png) no-repeat;
+            margin: 0 auto;
+            &.playmode_btn{
+              width: 26px;
+              height: 25px;
+              background-position: 0 -205px;
+              &.order{
+                  width: 23px;
+                  height: 20px;
+                  background-position: 0 -260px;
+              }
+              &.random{
+                width: 25px;
+                height: 19px;
+                background-position: 0 -74px;
+              }
+              &.single{
+                background-position: 0 -232px;
+              }
+            }
+            &.prev_btn{
+                width: 19px;
+                height: 20px;
+                background-position: 0 -30px;
+            }
+            &.play_btn{
+              width: 21px;
+              height: 29px;
+              background-position: 0 0;
+              &.pause{
+                background-position: -30px 0;
+              }
+            }
+            &.next_btn{
+                width: 19px;
+                height: 20px;
+                background-position: 0 -52px;
+            }
+            &.playlist_btn{
+              background: url(../images/sprite_play.png) no-repeat;
+              background-size: 40px 350px;
+              background-position: 0 -240px;
+              width: 24px;
+              height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .mini_player{
+    position: fixed;
+    top: 0px;
+    height: 50px;
+    width: 40px;
+    right: 0;
+    z-index: 100;
+    .mini_play_icon{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      span{
+        margin: 0 2px;
+        width: 2px;
+        height: 18px;
+        background: #fff;
+        &:nth-child(odd){
+          -webkit-animation: playIcon 0.5s infinite ease-in alternate;
+          animation: playIcon 0.5s infinite ease-in alternate;
+        }
+        &:nth-child(even){
+          -webkit-animation: playIcon_even 0.5s infinite ease-in alternate;
+          animation: playIcon_even 0.5s infinite ease-in alternate;
+        }
+        &.pause{
+          animation-play-state: paused;
+        }
+      }
+    }
+  }
+}
+
+@keyframes playIcon {
+  100%{
+    height: 35px;
+  }
+}
+
+@keyframes playIcon_even {
+  100%{
+    height: 16px;
+  }
+}
+
+
+
+@keyframes  playerRotate{
+  0%{
+    transform: rotate(0)
+  }
+  100%{
+    transform: rotate(360deg)
+  }  
+}

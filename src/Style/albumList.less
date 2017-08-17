@@ -1,0 +1,40 @@
+.album_list{
+    .album_item{
+        position: relative;
+        overflow: hidden;
+        padding: 4px 0;
+        border-bottom: none;
+        .album_item_pic{
+            height: 60px;
+            width: 60px;
+            display: block;
+            margin-right: 10px;
+        }
+        .album_info{
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e5;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            .album_title{
+                font-size: 14px;
+                color: #000;
+                margin-bottom: 6px;
+            }
+            .album_subtitle{
+                font-size: 12px;
+                color: rgba(0, 0, 0, 0.5);
+                margin-bottom: 4px;
+            }
+        }
+        .album_play_icon{
+            height: 24px;
+            width: 24px;
+            background: url(../images/list_sprite.png) no-repeat;
+            background-position: 0 0;
+            background-size: 24px 60px;
+            margin-right: 20px;
+        }
+    }
+}

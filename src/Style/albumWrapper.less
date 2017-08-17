@@ -1,0 +1,104 @@
+.album_wrapper_container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    .album_wrapper_detail{
+        padding: 20px 14px;
+        position: relative; 
+        height: 35%;
+        box-sizing: border-box;
+        .album_cover_bg{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            background-size: cover;
+            background-position: bottom center;
+            opacity: 0.6;
+            -webkit-filter: blur(24px);
+            filter: blur(24px);
+            transition: opacity .3s linear;
+        }
+        .album_pic{
+            width: 150px;
+            height: 150px;
+            img{
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+        .album_info{
+            margin-left: 20px;
+            text-align: left;
+            padding-top: 15px;
+            .album_name{
+                color: #fff;
+                font-size: 18px;
+                margin-bottom: 25px;
+            }
+            .album_singer{
+                color: #fff;
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            .album_publicTime{
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+        .album_bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            img{
+                transform-origin: top;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+    }
+    .album_wrapper_tab{
+        position: relative;
+        width: 100%;
+        height: 43px;
+        line-height: 43px;
+        padding: 0 16px;
+        border-bottom: 1px solid #e5e5e5;
+        background: #fff;
+        .tab_item{
+            font-size: 14px;
+            color: #000;
+            text-align: center;
+            &.active{
+                color: red;
+                border-bottom: 2px solid red;
+            }
+        } 
+    }
+    .album_wrapper_song{
+        position: fixed;
+        width: 100%;
+        top: 35%;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+        background: #fff;
+        transform-origin: center center;
+        .album_song_container{
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}
