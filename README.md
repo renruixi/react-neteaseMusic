@@ -35,13 +35,9 @@ react + react-router + redux + immutable + less + webpack
 
 8.支持筛选不同分类的MV
 
+![Alt text]('./screen/home.png')
+![Alt text]('./screen/search.png')
 
-<img src='./screen/home.png'>
-<img src='./screen/search.png'>
-<img src='./screen/search_2.png'>
-<img src='./screen/singerList.png'>
-<img src='./screen/mv_sort.png'>
-<img src='./screen/singerDetail.png'>
-<img src='./screen/singer_album.png' />
-<img src='./screen/player.png' />
-<img src='./screen/mv_sort.png' />
+
+
+
