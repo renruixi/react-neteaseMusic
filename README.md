@@ -1,6 +1,6 @@
 
 ##  背景
-此项目为学习以下技术栈利用空余时间做的一个 简易仿网易云音乐app的spa
+此项目为利用空余时间做的一个 简易仿网易云音乐app的spa
 
 ## 技术栈：
 
@@ -32,3 +32,5 @@ react + react-router + redux + immutable + less + webpack
 6.支持 上、下一首歌曲
 
 7.支持 全屏播放器、mini播放器模式
+
+8.支持筛选不同分类的MV
