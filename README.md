@@ -38,15 +38,15 @@ react + react-router + redux + immutable + less + webpack
 
 ### 首页 
 
-<img src='./screen/home.png'  width="375" /> 
+<img src='./screen/home.png' width="375" /> 
 
 ### 搜索页 
 
-<img src='./screen/search.png'  width="375" /> <img src='./screen/search_2.png'  width="375" />
+<img src='./screen/search.png' width="375" /> <img src='./screen/search_2.png' width="375" />
 
 ### 歌手列表
 
-<img src='./screen/singerList.png'  width="375" /> <img src='./screen/singerDetail.png' width="375" />
+<img src='./screen/singerList.png' width="375" /> <img src='./screen/singerDetail.png' width="375" />
 
 ### 歌手专辑  
 
@@ -58,7 +58,7 @@ react + react-router + redux + immutable + less + webpack
 
 ### mv分类列表  
 
-<img src='./screen/mv_sort.png'  width="375" />
+<img src='./screen/mv_sort.png' width="375" />
 
 
 
