@@ -35,15 +35,16 @@ react + react-router + redux + immutable + less + webpack
 
 8.支持筛选不同分类的MV
 
-<img src='./screen/home.png' style="display:inline-block"/>
-<img src='./screen/search.png' style="display:inline-block"/>
-<img src='./screen/search_2.png' style="display:inline-block" />
-<img src='./screen/singerList.png' style="display:inline-block" />
-<img src='./screen/mv_sort.png' style="display:inline-block" />
-<img src='./screen/singerDetail.png' style="display:inline-block" />
-<img src='./screen/singer_album.png'  style="display:inline-block" />
-<img src='./screen/player.png'  style="display:inline-block" />
-<img src='./screen/mv_sort.png'  style="display:inline-block" />
+
+<img src='./screen/home.png' style="display:inline-block" width="357" />
+<img src='./screen/search.png' style="display:inline-block" width="357"/>
+<img src='./screen/search_2.png' style="display:inline-block" width="357"/>
+<img src='./screen/singerList.png' style="display:inline-block" width="357"/>
+<img src='./screen/mv_sort.png' style="display:inline-block" width="357"/>
+<img src='./screen/singerDetail.png' style="display:inline-block" width="357"width="357"/>
+<img src='./screen/singer_album.png'  style="display:inline-block" width="357"/>
+<img src='./screen/player.png'  style="display:inline-block" width="357"/>
+<img src='./screen/mv_sort.png'  style="display:inline-block" width="357"/>
 
 
 
