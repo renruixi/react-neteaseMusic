@@ -208,6 +208,10 @@ class Main extends Component{
             })
         }
     }
+    componentWillUnmount(){
+        let {clearSingerDetail } =this.props;
+        clearSingerDetail();
+    }
     componentWillReceiveProps(nextProps) {
         if(this.props.currentKey !== nextProps.currentKey){
             let { currentKey } = nextProps
@@ -286,7 +290,7 @@ const mapDispatchToProps = (dispatch)=>{
             dispatch(setSinger(data))
         },
         clearSingerDetail:()=>{
-            dispatch(clearSingerDetail)
+            dispatch(clearSingerDetail())
         }
     }
 }

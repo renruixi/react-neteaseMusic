@@ -157,7 +157,7 @@ export const singerDetail = (state = singerDetailState, action = {}) => {
                 ...payload
             })
         case actionTypes.CLEAR_SINGER_DETAIL:
-            return singerDetailState
+            return state = singerDetailState;
         default:
             return state;
     }

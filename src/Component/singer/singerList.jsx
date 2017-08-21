@@ -238,7 +238,6 @@ class Main extends Component{
         forceCheck()
     }
     render(){
-        console.log(1)
         let {isFetching,list,scrollX,scrollY} = this.props.singerList;
         
         let scrollProps = {

@@ -227,7 +227,8 @@ export const setSingerDetail = (data) => {
     }
 }
 
-export const clearSingerDetail = (data) => {
+export const clearSingerDetail = () => {
+    console.log(11)
     return {
         type: actionTypes.CLEAR_SINGER_DETAIL,
     }
