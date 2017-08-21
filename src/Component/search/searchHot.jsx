@@ -8,6 +8,13 @@ import 'Style/search/searchHot.less'
 class SearchHot extends Component{
     constructor (props) {
         super(props)
+        this.setQuery = this.setQuery.bind(this)
+    }
+    setQuery(q){
+        let { setSearchState } = this.props;
+        setSearchState({
+            query:q
+        })
     }
     render(){
         let { isFetching,hotkey } = this.props.hotSearch
@@ -24,7 +31,7 @@ class SearchHot extends Component{
                             <ul className="hot_list clearfix">
                                 {
                                     hotkey.map((item,index)=>{
-                                        return <li className="hot_item" key={index}>{item.k}</li>
+                                        return <li className="hot_item" key={index} onClick={()=>this.setQuery(item.k)}>{item.k}</li>
                                     })
                                 }
                             </ul>

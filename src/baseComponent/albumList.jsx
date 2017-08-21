@@ -5,6 +5,7 @@ import { findIndex } from 'common/js/util'
 import { connect }  from 'react-redux'
 import '../Style/albumList.less'
 import { browserHistory } from 'react-router'
+import * as router from 'react-router'
 
 import { setSinger } from 'Redux/Action'
 
@@ -18,7 +19,7 @@ class AlbumList extends Component{
             avatar:album.image,
             name:album.title
         })
-        let path = `/albumdetail/${album.mid}`;
+        let path = `${location.pathname}/albumdetail/${album.mid}`;
         browserHistory.push(path)
     }
     render(){

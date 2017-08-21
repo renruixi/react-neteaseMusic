@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import BetterScroll from 'better-scroll'
+import { is, fromJS } from 'immutable';
 
 class ScrollView extends Component {
   constructor (props,context) {
@@ -20,28 +21,33 @@ class ScrollView extends Component {
     this.scroll = new BetterScroll(this.refs.scrollwrap, {
       probeType: this.props.probeType,
       click: this.props.click,
-      snap:this.props.snap
+      snap:this.props.snap,
+      scrollbar:this.props.scrollbar,
     })
+  }
+  componentWillReceiveProps(nextProps) {
+    let {scrollX,scrollY} = nextProps;
+    this.scrollTo(scrollX || 0,scrollY || 0,0,'easing');
   }
   componentDidMount() {
     let {scrollX,scrollY} = this.props;
+    this.scrollTo(scrollX || 0,scrollY || 0,0,'easing');
     setTimeout(()=>{
-      this.scroll && this.scrollTo(scrollX || 0,scrollY || 0,'easing')
+      this._onScroll();
+      this._onScrollEnd();
     },20)
   }
-  onScroll (callback) {
-    setTimeout(()=>{
-      this.scroll && this.scroll.on('scroll', (e) => {
-        callback && callback(e)
-      })
-    },20)
+  _onScroll (callback) {
+    let { onScroll } = this.props;
+    this.scroll && this.scroll.on('scroll', (e) => {
+      onScroll && onScroll(e)
+    })
   }
-  onScrollEnd(callback){
-    setTimeout(()=>{
-        this.scroll && this.scroll.on('scrollEnd', (e) => {
-        callback && callback(e)
-      })
-    },20)
+  _onScrollEnd(callback){
+    let { onScrollEnd } = this.props;
+    this.scroll && this.scroll.on('scrollEnd', (e) => {
+      onScrollEnd && onScrollEnd(e)
+    })
   }
   enable () {
     this.scroll && this.scroll.enable()
@@ -56,7 +62,11 @@ class ScrollView extends Component {
     this.scroll && this.scroll.refresh()
   }
   scrollTo () {
-    this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+    setTimeout(()=>{
+      let { scrollToCallback } = this.props;
+      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments);
+      scrollToCallback && scrollToCallback()
+    },20)
   }
   scrollToElement () {
     this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
@@ -71,9 +81,9 @@ class ScrollView extends Component {
 }
 
 ScrollView.defaultProps = {
-  probeType: 3,
+  probeType:3,
   click: true,
-  data: null,
+  scrollbar:true
 }
 
 export default ScrollView

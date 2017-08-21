@@ -1,9 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import Header from 'baseComponent/header'
-import Tab from 'baseComponent/tab'
+import IndexWrapper from 'Component/index'
 import {createSinger} from 'common/js/song'
 import wrapper from '../wrapper'
-import { is, fromJS } from 'immutable';
 import ScrollView from 'baseComponent/scrollview'
 import LazyLoad from 'react-lazyload';
 import { forceCheck } from 'react-lazyload';
@@ -23,9 +21,6 @@ class SingerList extends Component{
     }
     componentDidMount() {
         this._calcHeight();
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
     }
     componentDidUpdate(prevProps, prevState) {
         this._calcHeight();
@@ -226,35 +221,39 @@ class Main extends Component{
     constructor(props,context) {
         super(props,context);
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-    }
     componentDidMount(){
-        this.refs.scrollview.onScroll((e)=>{  //在iscroll或者better-scroll中 lazyload监听不到原始的scroll事件  只能通过监听 上层scroll-view的scroll事件去触发回调  触发lazyLoad的forceCheck()
-            this.refs.singerList && this.refs.singerList._listenScroll(e)
-            forceCheck()
-        })
-        this.refs.scrollview.onScrollEnd((e)=>{
-            this.props._setScrollPos({
-                x:e.x,
-                y:e.y
-            })
-        })
+        // this.refs.scrollview.onScroll((e)=>{  //在iscroll或者better-scroll中 lazyload监听不到原始的scroll事件  只能通过监听 上层scroll-view的scroll事件去触发回调  触发lazyLoad的forceCheck()
+        //     this.refs.singerList && this.refs.singerList._listenScroll(e)
+        //     forceCheck()
+        // })
+        // this.refs.scrollview.onScrollEnd((e)=>{
+        //     this.props._setScrollPos({
+        //         x:e.x,
+        //         y:e.y
+        //     })
+        // })
+    }
+    onScroll(e){
+        //this.refs.singerList && this.refs.singerList._listenScroll(e)
+        forceCheck()
     }
     render(){
+        console.log(1)
         let {isFetching,list,scrollX,scrollY} = this.props.singerList;
+        
         let scrollProps = {
-            scrollX:scrollX,
-            scrollY:scrollY
+            onScrollEnd:this.props._setScrollPos.bind(this),
+            onScroll:this.onScroll.bind(this),
+            scrollToCallback:forceCheck,
+            scrollX,
+            scrollY
         }
         let singerListProps = {
             setSinger:this.props.setSinger,
             list:list
         }
         return (
-            <div>
-                <Header></Header>
-                <Tab></Tab>
+            <IndexWrapper>
                 <div className='singer'>
                     {
                         (typeof isFetching != 'boolean' || isFetching) && <Loading />
@@ -267,7 +266,7 @@ class Main extends Component{
                         </div>
                     </ScrollView>
                 </div>
-            </div>
+            </IndexWrapper>
         )
     }    
 }

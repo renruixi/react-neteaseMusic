@@ -8,7 +8,8 @@ import 'Style/player.less'
 class FullScreenPlayer extends Component{
   constructor (props) {
     super(props)
-    this.onProgressChange = this.onProgressChange.bind(this)
+    this.onProgressChange = this.onProgressChange.bind(this);
+    this.goBack = this.goBack.bind(this)
   }
   timePlus(num, n = 2) {
     let len = num.toString().length
@@ -23,6 +24,12 @@ class FullScreenPlayer extends Component{
     let minute = interval / 60 | 0
     let second = this.timePlus(interval % 60)
     return `${minute}:${second}`
+  }
+  goBack(){
+    let {setPlayerMode} = this.props;
+    setPlayerMode({
+      playerMode:'mini'
+    })
   }
   percent(){
     let { currentTime,currentSong } = this.props;
@@ -47,7 +54,7 @@ class FullScreenPlayer extends Component{
         <div className="fullscreen_bg" style={{backgroundImage:`url(${image})`}}>
         </div>
         <div className="fullscreen_play_header">
-          <div className="player_back"></div>
+          <div className="player_back" onClick={this.goBack}></div>
           <h2 className="player_songname">{title}</h2>
           <h4 className="player_singer">{singer}</h4>
         </div>
@@ -82,4 +89,22 @@ class FullScreenPlayer extends Component{
   }
 }
 
-export default FullScreenPlayer
+import { connect } from 'react-redux'
+import { setPlayerMode } from 'Redux/Action'
+
+
+function mapDispatchToProps(dispatch){
+  return {
+    setPlayerMode:()=>{
+      dispatch(setPlayerMode({
+        playerMode:'mini'
+      }))
+    }
+  }
+}
+
+
+
+export default connect(()=>{
+  return{}
+},mapDispatchToProps)(FullScreenPlayer)

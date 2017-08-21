@@ -3,6 +3,8 @@
     top: 0;
     bottom: 0;
     width: 100%;
+    background:#ccc;
+    z-index: 2;
     .album_wrapper_detail{
         padding: 20px 14px;
         position: relative; 
@@ -17,7 +19,7 @@
             width: 100%;
             background-size: cover;
             background-position: bottom center;
-            opacity: 0.6;
+            opacity: 0.9;
             -webkit-filter: blur(24px);
             filter: blur(24px);
             transition: opacity .3s linear;
@@ -88,7 +90,7 @@
         } 
     }
     .album_wrapper_song{
-        position: fixed;
+        position: absolute;
         width: 100%;
         top: 35%;
         left: 0;

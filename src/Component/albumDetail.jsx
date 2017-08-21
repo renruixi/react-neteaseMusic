@@ -41,6 +41,8 @@ class Main extends Component{
     }
 }
 
+
+
 export default wrapper({
     id:'albumDetail',
     component:Main,

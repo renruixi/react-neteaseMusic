@@ -1,12 +1,7 @@
 import jsonp from 'common/js/jsonp'
+import axios from 'axios'
 import * as actionTypes from '../Action/actionTypes'
 import * as api from 'api/api'
-
-const options = {
-    param: 'jsonpCallback'
-}
-
-const ERR_OK = '0'
 
 // 获取首页推荐数据
 export const getRecommend = () => api.getRecommend(getJsonpData)
@@ -20,8 +15,8 @@ export const getRank = () => api.getRank(getJsonpData)
 // 获取电台数据
 export const getRadioList = () => api.getRadioList(getJsonpData)
 
-// 获取电台数据
-export const getMVList = () => api.getMVList(getJsonpData)
+// 获取MV数据
+export const getMVList = (params)=>api.getMVList(params,getJsonpData)
 
 // 获取热门搜索数据
 export const getHotSearch = () => api.getHotSearch(getJsonpData)
@@ -31,25 +26,27 @@ export const getSingerDetail = ({ singerId }) => api.getSingerDetail({ singerId,
 
 //获取专辑详情数据
 export const getAlbumDetail = ({ albumId }) => api.getAlbumDetail({ albumId, fetch: getJsonpData })
-//获取歌单详情数据
+    //获取歌单详情数据
 export const getSongSheet = ({ disstid }) => api.getSongSheet({ disstid, fetch: getJsonDataV2 })
 
 //获取歌手专辑
 export const getSingerAlbum = (singermid) => api.getSingerAlbum({ singermid, fetch: getJsonpData })
 
+export const getSongSheetList = ({ categoryId }) => api.getSongSheetList({ categoryId, fetch: getJsonApi })
 
-export const setSearchState = (data)=>{
+
+export const setSearchState = (data) => {
     return {
-        type:actionTypes.SET_SEARCH_STATE,
-        payload:{
+        type: actionTypes.SET_SEARCH_STATE,
+        payload: {
             ...data
         }
     }
 }
 
-export const clearSearchState = ()=>{
+export const clearSearchState = () => {
     return {
-        type:actionTypes.CLEAR_SEARCH_STATE,
+        type: actionTypes.CLEAR_SEARCH_STATE,
     }
 }
 
@@ -58,7 +55,7 @@ export const setSinger = (singer) => {
     return {
         type: actionTypes.SET_SINGER,
         payload: {
-            singer: singer
+            ...singer
         }
     }
 }
@@ -137,12 +134,29 @@ export const getJsonDataV2 = (url, data, options, id) => {
     }
 }
 
+
+export const getJsonApi = (url, data, id) => {
+    return (dispatch) => {
+        dispatch(requestStart(null, id))
+        return axios.get(url, {
+            params: data
+        }).then((res) => {
+            if (res.code == '0') {
+                dispatch(requestSuccess(res, id))
+            } else {
+                console.log('status', res.subcode)
+            }
+        }).catch(error => console.log(error))
+    }
+}
+
 export const setScrollPos = (data, id) => {
     return {
         type: actionTypes.SET_SCROLL_POS,
         payload: {
-            data: data,
-            id: id
+            id: id,
+            scrollX: data.scrollX,
+            scrollY: data.scrollY
         }
     }
 }
@@ -199,6 +213,42 @@ export const delPlayList = (data) => {
         type: actionTypes.DEL_PLAYLIST,
         payload: {
             ...data
+        }
+    }
+}
+
+
+export const setSingerDetail = (data) => {
+    return {
+        type: actionTypes.SET_SINGER_DETAIL,
+        payload: {
+            ...data
+        }
+    }
+}
+
+export const clearSingerDetail = (data) => {
+    return {
+        type: actionTypes.CLEAR_SINGER_DETAIL,
+    }
+}
+
+
+export const setMvParams = (data) => {
+    return {
+        type: actionTypes.SET_MV_PAMRAS,
+        payload: {
+            mvParams: data
+        }
+    }
+}
+
+
+export const setMvSort = (data)=>{
+    return {
+        type:actionTypes.SET_MV_SORT,
+        payload:{
+            show:data.show
         }
     }
 }

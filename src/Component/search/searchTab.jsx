@@ -1,16 +1,30 @@
 import React, {Component, PropTypes} from 'react';
 import 'Style/search/searchTab.less'
 
+import { connect } from 'react-redux'
+import { setSearchState } from 'Redux/Action'
+
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        setSearchState:(data)=>{
+            dispatch(setSearchState(data))
+        }   
+    }
+}
+
 class SearchTab extends Component{
     constructor(props){
         super(props);
         this.state = {
-            currentTab:this.props.defaultTab ||  '0'
+            currentTab:'0'
         }
     }
     tabClick(t){  //点击tab 触发父级  changeTab
-        let {changeTab} = this.props;
-        changeTab && changeTab(t)
+        let { setSearchState } = this.props;
+        setSearchState({
+            currentKey:t
+        })
         this.setState({
             currentTab:t
         })
@@ -30,8 +44,6 @@ class SearchTab extends Component{
         )
     }
 }
-
-
 SearchTab.defaultProps = {
     tabList:[
         {
@@ -46,6 +58,8 @@ SearchTab.defaultProps = {
         }
     ]
 }
+export default connect(()=>{
+    return{}
+},mapDispatchToProps)(SearchTab)
 
-export default SearchTab;
 

@@ -2,10 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import ScrollView from 'baseComponent/scrollview'
 import LazyLoad from 'react-lazyload';
 import { forceCheck } from 'react-lazyload';
-import Header from 'baseComponent/header'
-import Tab from 'baseComponent/tab'
 import wrapper from './wrapper'
 import Loading from 'baseComponent/Loading/Loading'
+import IndexWrapper from 'Component/index'
 import 'Style/rank.less'
 
 
@@ -61,24 +60,20 @@ class Main extends Component{
     constructor(props) {
         super(props);
     }
-    componentDidMount(){
-        this.refs.scrollview.onScroll((e)=>{  //在iscroll或者better-scroll中 lazyload监听不到原始的scroll事件  只能通过监听 上层scroll-view的scroll事件去触发回调  触发lazyLoad的forceCheck()
-            forceCheck()
-        })
-        this.refs.scrollview.onScrollEnd((e)=>{
-            this.props._setScrollPos(e)
-        })
+    onScroll(){
+        forceCheck()
     }
     render(){
         let {isFetching,topList,scrollX,scrollY} = this.props.rankList;
         let scrollProps = {
+            onScroll:this.onScroll.bind(this),
+            onScrollEnd:this.props._setScrollPos.bind(this),
+            scrollToCallback:forceCheck,
             scrollX:scrollX,
             scrollY:scrollY
         }
         return (
-            <div>
-                <Header></Header>
-                <Tab></Tab>
+            <IndexWrapper>
                 <div className='rank' ref='rank'>
                     {
                         (typeof isFetching != 'boolean' || isFetching) && <Loading />
@@ -91,7 +86,7 @@ class Main extends Component{
                         </div>
                     </ScrollView>
                 </div>
-            </div>
+            </IndexWrapper>
         )
     }    
 }

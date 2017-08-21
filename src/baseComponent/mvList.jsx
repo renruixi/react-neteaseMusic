@@ -22,7 +22,7 @@ class MvList extends Component{
         return min+':'+sec
     }
     render(){
-        let { list } = this.props;
+        let { list,style } = this.props;
         return (
             <ul className="mv_list clearfix">
                 {
@@ -32,11 +32,13 @@ class MvList extends Component{
                                 <div className="mv_item_container">
                                     <img className="mv_pic" src={item.image}></img>
                                     <p className="mv_play_count">{item.playCount}</p>
-                                    <p className="mv_duration">{this.formatDuration(item.duration)}</p>
+                                    {
+                                        item.duration && <p className="mv_duration">{this.formatDuration(item.duration)}</p>
+                                    }
                                 </div>
                                 <div className="mv_info">
                                     <div className="mv_title">{item.title}</div>
-                                    <div className="mv_subtitle">{item.singer}&nbsp;&nbsp;&nbsp;{item.publicTime}</div>
+                                    <div className="mv_subtitle">{item.publicTime}&nbsp;&nbsp;&nbsp;{item.singer}</div>
                                 </div>
                             </li>
                         )

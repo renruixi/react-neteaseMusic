@@ -4,7 +4,6 @@ import Search from 'Component/search/index'
 import { browserHistory } from "react-router"
 import { connect } from 'react-redux'
 
-
 import '../Style/header.less';
 
 
@@ -12,23 +11,27 @@ class Header extends Component{
     constructor(props) {
         super(props)
     }
+    goToSearchPage(){
+        browserHistory.push(`/search`);
+    }
     render(){
-        let { searchShow} = this.props.searchDetail;
+        //<Search ref="searchview" />
+        let { searchShow } = this.props.searchDetail;
         return (
-            <div className="header flex">
+            <div className="header flex vertical-middle">
                 {
                     !searchShow && <div className="logo_icon"></div> 
                 }
                 <div className="search_wrapper flex1">
-                    <Search ref="searchview" />
+                    <input type="text" onClick={this.goToSearchPage.bind(this)} placeholder='搜索音乐、歌词、电台'/>
                 </div>
+                <div className="play_icon"></div>
             </div> 
         )
     }
 }
 
 
-import { setSearchState } from 'Redux/Action'
 
 function mapStateToProps(state) {
     return {
@@ -36,16 +39,8 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        setSearchState:(data)=>{
-            dispatch(setSearchState(data))
-        }
-    }
-}
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(Header)
+export default connect(mapStateToProps,{})(Header)
 
 
 

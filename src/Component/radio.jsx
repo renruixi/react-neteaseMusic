@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import ScrollView from 'baseComponent/scrollview'
 import {Link} from 'react-router'
-import {is, fromJS} from 'immutable';
 import wrapper from './wrapper'
 import 'Style/radio.less'
 import Header from 'baseComponent/header'

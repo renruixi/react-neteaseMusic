@@ -14,16 +14,16 @@ const history = process.env.NODE_ENV !== 'production'
     ? browserHistory
     : hashHistory;
 
-const Recommend = (location, cb) => {
+const Home = (location, cb) => {
     require.ensure([], require => {
-        cb(null, require("../Component/home/main").default)
-    }, 'Header')
+        cb(null, require("../Component/home").default)
+    }, 'Home')
 }
 
-const Singer = (location, cb) => {
+const SingerList = (location, cb) => {
     require.ensure([], require => {
-        cb(null, require("../Component/singer/singer").default)
-    }, 'Singer')
+        cb(null, require("../Component/singer/singerList").default)
+    }, 'SingerList')
 }
 
 const SingerDetail = (location, cb) => {
@@ -79,18 +79,24 @@ class Roots extends Component {
     }
 }
 
+            
 const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Roots}>
-            <Route path="singer" getComponent={Singer}></Route>
-            <Route path="/singerdetail/:singerId" getComponent={SingerDetail}></Route>
-            <Route path="/albumdetail/:albumId" getComponent={AlbumDetail}></Route>
-            <Route path="/songsheet/:disstid" getComponent={SongSheet}></Route>
-            <Route path="recommend" getComponent={Recommend}/>
+            <Route path="search" getComponent={Search}>
+                <Route path="albumdetail/:albumId" getComponent={AlbumDetail}></Route>
+            </Route>
+            <Route path="rank" getComponent={Rank}/>
+            <Route path="home" getComponent={Home}>
+                <Route path="songsheet/:disstid" getComponent={SongSheet}></Route>
+            </Route>
+            <Route path="singerList" getComponent={SingerList} />
+            <Route path="singerdetail/:singerId" getComponent={SingerDetail}>
+                <Route path="albumdetail/:albumId" getComponent={AlbumDetail}></Route>
+            </Route>
             <Route path="radio" getComponent={radioList}/>
             <Route path="hotMV" getComponent={HotMV}/>
-            <Route path="rank" getComponent={Rank}/>
-            <IndexRedirect from='/' to='/recommend'/>
+            <IndexRedirect from='/' to='/home'/>
         </Route>
     </Router>
 );

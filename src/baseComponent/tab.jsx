@@ -27,11 +27,11 @@ Tab.defaultProps = {
     tabList:[
         {
             'name':'个性推荐',
-            'url':'/recommend'
+            'url':'/home'
         },
         {
             'name':'歌手',
-            'url':'/singer'
+            'url':'/singerList'
         },
         {
             'name':'排行榜',

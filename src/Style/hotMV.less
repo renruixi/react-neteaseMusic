@@ -1,11 +1,109 @@
-.mv_container{
-    position: fixed;
-    z-index: 1;
-    top: 50px;
-    bottom:0;
-    width: 100%;
-    .mv_list_outer{
-        height: 100%;
-        overflow: hidden;
+.mv{
+    .mv_header{
+        background: #f4f4f4;
+        height: 40px;
+        line-height: 40px;
+        .mv_part_switch{
+            height: 40px;
+            border-radius: 2px;
+            font-size: 0;
+            .switch_item{
+                position: relative;
+                display: inline-block;
+                padding: 0 16px;
+                height: 38px;
+                position: relative;
+                font-size: 14px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #c9c9c9 transparent #c9c9c9 transparent;
+                &.left{
+                    right: -1px;
+                    border-top-left-radius: 2px;
+                    border-bottom-left-radius: 2px;
+                    border-color: #c9c9c9;
+                }
+                &.right{
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
+                    border-color: #c9c9c9;
+                }
+                &.select{
+                    background-color: #31c27c;
+                    color: #fff;
+                    border-color: #31c27c;
+                    z-index: 2;
+                }
+            }
+        }
+        .sort_tag{
+            font-size: 14px;
+            padding: 0 15px;
+            text-align: center;
+        }
+    }
+    .mv_sort{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+        width: 100%;
+        
+        .mv_sort_mask{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: -1;
+            width: 100%;
+        }
+        .mv_sort_container{
+            background:#fff;
+            padding: 0 10px;
+            transition: all 0.2s;
+            .sort_item{
+                .sort_title{
+                    padding-top: 15px;
+                    padding-bottom: 8px;
+                    color: #aaa;
+                    font-size: 13px;
+                    text-align: left;
+                }
+                .sort_list{
+                    padding: 10px 0;
+                    .sort_list_item{
+                        margin-right: 20px;
+                        margin-bottom: 10px;
+                        font-size: 15px;
+                        color: rgba(0, 0, 0, 0.7);
+                        &.active{
+                            color: red;
+                        }
+                    }
+                }
+            }
+            .mv_sort_confirm{
+                border-top:1px solid #eee;
+                height: 50px;
+                line-height: 50px;
+                font-size: 18px;
+                color: red;
+                text-align: center;
+            }
+        }
+        
+    }
+    .mv_container{
+        position: fixed;
+        z-index: 1;
+        top: 40px;
+        bottom:0;
+        width: 100%;
+        .mv_list_outer{
+            height: 100%;
+            overflow: hidden;
+        }
     }
 }

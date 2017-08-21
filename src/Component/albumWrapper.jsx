@@ -60,11 +60,6 @@ class Main extends Component{
         let { deleStore }  = this.props;
         deleStore('albumDetail');
     }
-    componentDidMount() {
-        this.refs.scrollview.onScroll((e)=>{
-            let {x,y} = e;
-        })
-    }
     render(){
         let { isFetching,list,album} = this.props;
         let songListProps = {

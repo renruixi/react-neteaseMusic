@@ -21,12 +21,18 @@ class Album {
         this.id = options.albumID;
         this.mid = options.albumMID;
         this.title = options.albumName;
-        this.image = options.albumPic;
+        this.image = options.albumPic || 　`https://y.gtimg.cn/music/photo_new/T002R300x300M000${this.mid}.jpg?max_age=2592000`;
         this.publicTime = options.publicTime;
         this.singer = options.singerName;
         this.singerId = options.singerID;
         this.singerMid = options.singerMID
     }
+}
+
+export function createAlbum(albumData) {
+    return new Album({
+        ...albumData
+    })
 }
 
 class AlbumDetail {
@@ -44,6 +50,12 @@ class AlbumDetail {
     }
 }
 
+export function createAlbumDetail(albumData) {
+    return new AlbumDetail({
+        ...albumData
+    })
+}
+
 class MV {
     constructor(options) {
         this.id = options.docid || options.mv_id;
@@ -54,8 +66,16 @@ class MV {
         this.singer = options.singer_name || options.singername;
         this.singerId = options.singerid;
         this.singerMid = options.singerMID || options.singermid;
-        this.playCount = options.play_count || options.listennum
+        this.playCount = options.play_count || options.listennum;
+        this.publicTime = options.publicTime;
     }
+}
+
+
+export function createMV(mvData) {
+    return new MV({
+        ...mvData
+    })
 }
 
 
@@ -106,35 +126,4 @@ export function createSong(musicData) {
     return new Song({
         ...musicData
     })
-}
-
-export function createAlbumDetail(albumData) {
-    return new AlbumDetail({
-        ...albumData
-    })
-}
-
-
-export function createAlbum(albumData) {
-    return new Album({
-        ...albumData
-    })
-}
-
-
-
-export function createMV(mvData) {
-    return new MV({
-        ...mvData
-    })
-}
-
-
-
-
-
-export default {
-    createSong,
-    createAlbum,
-    createMV
 }

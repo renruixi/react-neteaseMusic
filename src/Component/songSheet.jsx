@@ -18,7 +18,6 @@ class Main extends Component{
       return ret
   }
   render(){
-    console.log(this.props.albumDetail)
     let { cdlist,isFetching} = this.props.albumDetail;
     let AlbumProps = {
         list:cdlist && this._normalizeSongs(cdlist[0].songlist),

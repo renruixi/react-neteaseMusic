@@ -14,7 +14,6 @@ const wrapper = (options)=>{
         component: <div></div>, //数据回调给的组件
     };
     Object.assign(setting,options);
-
     class IndexWrapper extends Component{
         constructor(props,context) {
             super(props,context);
@@ -25,7 +24,7 @@ const wrapper = (options)=>{
                 _setScrollPos:this._setScrollPos
             }
             return (
-                <this.props.component {...this.props} {...newProps} ref="children"/>
+                <this.props.component {...this.props} {...newProps} ref="children" />
             )
         }
         shouldComponentUpdate(nextProps, nextState) {
@@ -33,9 +32,9 @@ const wrapper = (options)=>{
                 if(nextProps[setting.id].isFetching){
                     return false;
                 }
-                return !is(fromJS(this.props[setting.id]), fromJS(nextProps[setting.id]))
+                return !is(fromJS(this.props), fromJS(nextProps))
             }else{
-                return !is(fromJS(this.props[setting.id]), fromJS(nextProps[setting.id]))
+                return !is(fromJS(this.props), fromJS(nextProps))
             }
         }
         _setScrollPos(e){
@@ -46,7 +45,7 @@ const wrapper = (options)=>{
                 scrollX:x
             },setting.id)
         }
-        componentDidMount() {
+        fetch(){
             if(!this.props[setting.id]){
                 return;
             }
@@ -66,6 +65,9 @@ const wrapper = (options)=>{
                     fn(params);
                 }
             }
+        }
+        componentWillMount() {
+            this.fetch();
         }
            
     }
