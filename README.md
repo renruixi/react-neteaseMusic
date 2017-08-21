@@ -42,7 +42,7 @@ react + react-router + redux + immutable + less + webpack
 
 ### 搜索页 
 
-<img src='./screen/search.png'  width="375"/> <img src='./screen/search_2.png'  width="375"/>
+<img src='./screen/search.png'  width="375" /> <img src='./screen/search_2.png'  width="375" />
 
 ### 歌手列表
 
@@ -50,7 +50,7 @@ react + react-router + redux + immutable + less + webpack
 
 ### 歌手专辑  
 
-<img src='./screen/singer_album.png'   width="375" />
+<img src='./screen/singer_album.png' width="375" />
 
 ### 播放器  
 
@@ -58,7 +58,7 @@ react + react-router + redux + immutable + less + webpack
 
 ### mv分类列表  
 
-<img src='./screen/mv_sort.png'  width="375"/>
+<img src='./screen/mv_sort.png'  width="375" />
 
 
 
